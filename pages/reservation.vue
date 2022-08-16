@@ -1,6 +1,6 @@
 <template>
   <v-row class="ma-0 pa-0" style="height: 100%">
-    <v-col class="ma-0 pa-0 d-flex" cols="6">
+    <v-col class="ma-0 pa-0 d-flex" md="6" cols="12">
       <v-card class="d-flex flex-column justify-center">
         <v-card-title class="justify-center" style="font-size: 1.4rem"
           >ADRES</v-card-title
@@ -31,7 +31,7 @@
         </v-card-text>
       </v-card>
     </v-col>
-    <v-col class="ma-0 pa-0" cols="6">
+    <v-col class="ma-0 pa-0" md="6" cols="12">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d350.76213076107797!2d32.85647174960759!3d39.91744352315268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9ed4d27f0d62d13d!2sTestere%20Ankara%20Korku%20Evi!5e0!3m2!1str!2str!4v1660498624377!5m2!1str!2str"
         width="100%"
@@ -47,37 +47,7 @@
 <script>
 export default {
   data() {
-    return {
-      currentLocation: {},
-      circleOptions: {},
-      locations: [
-        {
-          lat: 44.933076,
-          lng: 15.629058,
-        },
-        {
-          lat: 45.815,
-          lng: '15.9819',
-        },
-        {
-          lat: '45.12',
-          lng: '16.21',
-        },
-      ],
-      pins: {
-        selected: 'data:image/png;base64,iVBORw0KGgo...',
-        notSelected: 'data:image/png;base64,iVBORw0KGgo...',
-      },
-      mapStyle: [],
-      clusterStyle: [
-        {
-          url: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m1.png',
-          width: 56,
-          height: 56,
-          textColor: '#fff',
-        },
-      ],
-    }
+    return {}
   },
 }
 </script>

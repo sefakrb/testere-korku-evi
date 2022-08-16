@@ -50,28 +50,31 @@
         </v-card-text>
       </v-card></v-col
     >
-    <v-card
-      class="d-flex justify-center align-center flex-column"
-      v-for="item in items"
-      :key="item.src"
-      width="24vw"
-      height="60vh"
-      color="transparent"
-    >
-      <v-img
-        min-height="150"
-        min-width="150"
-        max-height="150"
-        max-width="150"
-        :src="require('../assets/' + item.src)"
-      ></v-img>
-      <v-card-title
-        style="font-family: 'Nosifer', cursive; font-size: 0.88rem"
-        class="justify-center"
-        >{{ item.title }}</v-card-title
-      >
-      <v-card-text>{{ item.text }}</v-card-text>
-    </v-card>
+    <v-row class="ma-0 pa-0">
+      <template class="ma-0 pa-0" v-for="item in items">
+        <v-col class="ma-0 pa-0" md="3" cols="12">
+          <v-card
+            class="d-flex justify-center align-center flex-column"
+            tile
+            color="transparent"
+          >
+            <v-img
+              min-height="150"
+              min-width="150"
+              max-height="150"
+              max-width="150"
+              :src="require('../assets/' + item.src)"
+            ></v-img>
+            <v-card-title
+              style="font-family: 'Nosifer', cursive; font-size: 0.88rem"
+              class="justify-center"
+              >{{ item.title }}</v-card-title
+            >
+            <v-card-text>{{ item.text }}</v-card-text>
+          </v-card></v-col
+        >
+      </template>
+    </v-row>
   </v-row>
 </template>
 
