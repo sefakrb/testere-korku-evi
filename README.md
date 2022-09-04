@@ -48,7 +48,7 @@ This directory contains your application views and routes. Nuxt will read all th
 
 More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
 
-![alt text](https://github.com/sefakrb/testere-korku-evi/static/v.png?raw=true)
+https://github.com/sefakrb/testere-korku-evi/static/v.png?raw=true
 
 ### `plugins`
 
