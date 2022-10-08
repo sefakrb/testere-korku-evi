@@ -1,59 +1,109 @@
-# testere-korku-evi
+# Testere Korku Evi
 
-## Build Setup
-
-```bash
-# install dependencies
-$ npm install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-### `Home`
-![Home](static/home.png)
-### `About Us`
-![About Us](static/about_us_1.png)
-![About Us](static/about_us_2.png)
-### `Rules`
-![Kurallar](static/rules.png)
-### `Story`
-![Story](static/story.png)
-### `Reservation`
-![Rezervation](static/reservation.png)
+<!-- PROJECT LOGO -->
+<div name="readme-top"  align="center">
+    <img src="assets/testere_korkuevi_logo.png" alt="Logo">
+</div>
 
 
-### `plugins`
+<br />
+<br />
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
 
-### `static`
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+        <a href="#built-with">Built With</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#pages">Pages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
 
-### `store`
+## About The Project
 
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
+  This website is for [Testere Korku Evi](https://incikentgayrimenkul.sahibinden.com/) which is a scare house in Ankara/Turkey
+
+
+### Built With
+
+* [![Vue][Vue.js]][Vue-url]
+* [![Nuxt][Nuxt]][Nuxt-url]
+
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Getting Started
+
+### Prerequisites
+
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/sefakrb/testere-korku-evi.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Build Setup 
+   * Run on development mode
+     ```sh
+     npm run dev
+     ```
+   * Build for production and launch server
+      ```sh
+      npm run build
+      npm run start
+      ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Pages
+#### Home
+  <img src="static/home.png" alt="Logo" >
+  
+#### About Us
+  <img src="static/about_us_1.png" alt="Logo">
+  <img src="static/about_us_2.png" alt="Logo">
+  
+#### Rules
+  <img src="static/rules.png" alt="Logo" >
+  
+#### Story
+  <img src="static/story.png" alt="Logo">
+  
+#### Reservation
+  <img src="static/reservation.png" alt="Logo" >
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Contact
+Sefa Karabaş - sefa799@gmail.com
+Project Link: [https://github.com/sefakrb/incikent-gayrimenkul](https://github.com/sefakrb/incikent-gayrimenkul-frontend)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Nuxt]: https://img.shields.io/badge/Nuxt-002E3B?style=for-the-badge&logo=nuxtdotjs&logoColor=#00DC82
+[Nuxt-url]: https://nuxtjs.org/
