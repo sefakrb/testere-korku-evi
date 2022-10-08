@@ -1,22 +1,20 @@
 <template>
   <v-row class="ma-0 pa-0 d-flex justify-center align-center">
-    <v-card
-      v-for="rule in rules"
-      :key="rule"
-      class="ma-10"
-      width="20vw"
-      height="30vh"
-      color="transparent"
-      ><v-icon color="red" x-large class="d-flex justify-center mt-2">{{
-        rule.icon
-      }}</v-icon>
-      <v-card-title
-        class="justify-center"
-        style="font-family: 'Nosifer', cursive; font-size: 1rem"
-        >{{ rule.title }}</v-card-title
+    <template v-for="rule in rules">
+      <v-col md="4" cols="12">
+        <v-card class="ma-10" color="transparent"
+          ><v-icon color="red" x-large class="d-flex justify-center mt-2">{{
+            rule.icon
+          }}</v-icon>
+          <v-card-title
+            class="justify-center"
+            style="font-family: 'Nosifer', cursive; font-size: 1rem"
+            >{{ rule.title }}</v-card-title
+          >
+          <v-card-text>{{ rule.rule }}</v-card-text>
+        </v-card></v-col
       >
-      <v-card-text>{{ rule.rule }}</v-card-text>
-    </v-card>
+    </template>
   </v-row>
 </template>
 
