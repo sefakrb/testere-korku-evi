@@ -32,7 +32,7 @@
 
 ## About The Project
 
-  This website is for [Testere Korku Evi](https://incikentgayrimenkul.sahibinden.com/) which is a scare house in Ankara/Turkey
+  This website is for [Testere Korku Evi](https://testere-korku-evi.vercel.app/) which is a scare house in Ankara/Turkey
 
 
 ### Built With
