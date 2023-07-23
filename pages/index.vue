@@ -7,7 +7,9 @@
       autoplay
       loop
       muted
-    ></video>
+    >
+      <track label="English" kind="captions" srclang="en" default />
+    </video>
     <v-col cols="12" class="d-flex align-center justify-center">
       <v-img :src="require('../assets/0003_KORKULARINLA-Y-ZLE-MEYE.png')"
         ><v-img :src="require('../assets/0004_HAZIRMISIN_.png')">

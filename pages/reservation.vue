@@ -33,6 +33,7 @@
     </v-col>
     <v-col class="ma-0 pa-0" md="6" cols="12">
       <iframe
+        title="Harita"
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d350.76213076107797!2d32.85647174960759!3d39.91744352315268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9ed4d27f0d62d13d!2sTestere%20Ankara%20Korku%20Evi!5e0!3m2!1str!2str!4v1660498624377!5m2!1str!2str"
         width="100%"
         height="100%"

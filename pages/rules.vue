@@ -1,8 +1,8 @@
 <template>
   <v-row class="ma-0 pa-0 d-flex justify-center align-center">
     <template v-for="rule in rules">
-      <v-col md="4" cols="12">
-        <v-card class="ma-10" color="transparent"
+      <v-col :key="rule" md="4" cols="12">
+        <v-card elevation="0" class="ma-10" color="transparent"
           ><v-icon color="red" x-large class="d-flex justify-center mt-2">{{
             rule.icon
           }}</v-icon>

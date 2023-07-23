@@ -20,43 +20,23 @@
           TESTERE KORKU EVİ
         </v-card-title>
         <v-card-text class="mt-5">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-          occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-          mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur
-          adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-          ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute
-          irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-          fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-          sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-          ea commodo consequat. Duis aute irure dolor in reprehenderit in
-          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum
+          Her an bir süprizle karşılaşabileceğiniz bu evden kaçış oyunu
+          içerisinde başrol sizsiniz. Ekibinizi toplayın, doğru strateji ve
+          taktikleri geliştirerek evden kaçın ve Jigsaw’ın elinden kurtulun.
+          Oyun içerisinde, senaryoya siz yön verecek, seçimleri siz yapacak ve
+          alternatif sonu siz belirleyeceksiniz. Korkarken eğlenecek, eğlenirken
+          kaçacaksınız. Yaşa yada öl. Seçimini yap!
         </v-card-text>
       </v-card></v-col
     >
-    <v-row class="ma-0 pa-0">
-      <template class="ma-0 pa-0" v-for="item in items">
-        <v-col class="ma-0 pa-0" md="3" cols="12">
+    <v-row class="ma-0 mt-14 pa-0">
+      <template v-for="item in items">
+        <v-col :key="item" class="ma-0 pa-0" md="3" cols="12">
           <v-card
             class="d-flex justify-center align-center flex-column"
             tile
             color="transparent"
+            elevation="0"
           >
             <v-img
               min-height="150"

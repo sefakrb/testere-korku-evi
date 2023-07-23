@@ -20,13 +20,13 @@
           class="ma-0 pa-0 d-flex justify-center align-center"
         >
           <v-row>
-            <template v-for="button in buttons">
+            <v-template :key="button" v-for="button in buttons">
               <v-col md="2" cols="4">
                 <v-btn width="8vw" color="red" text :to="button.route">{{
                   button.title
                 }}</v-btn>
               </v-col>
-            </template>
+            </v-template>
           </v-row>
 
           <!-- <v-btn class="mr-5" color="red" text to="/">ANA SAYFA</v-btn>
