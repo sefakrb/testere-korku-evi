@@ -123,5 +123,4 @@ export default {
     transform: translateX(-50%) translateY(-5px);
   }
 }
-
 </style>

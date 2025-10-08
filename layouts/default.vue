@@ -35,10 +35,7 @@
                 :aria-label="`${button.title} sayfasına git`"
                 prefetch
               >
-                <v-btn
-                  text
-                  class="nav-btn mx-1"
-                >
+                <v-btn text class="nav-btn mx-1">
                   {{ button.title }}
                 </v-btn>
               </nuxt-link>
@@ -67,10 +64,7 @@
           class="mobile-nav-link"
           prefetch
         >
-          <v-list-item
-            link
-            class="mobile-nav-item"
-          >
+          <v-list-item link class="mobile-nav-item">
             <v-list-item-content>
               <v-list-item-title class="text-center font-weight-bold">
                 {{ button.title }}
