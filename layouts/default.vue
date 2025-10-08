@@ -27,16 +27,21 @@
 
           <v-col v-if="!isMobile" cols="auto" class="pa-0">
             <div class="nav-buttons">
-              <v-btn
+              <nuxt-link
                 v-for="button in buttons"
                 :key="button.route"
                 :to="button.route"
-                text
-                class="nav-btn mx-1"
+                class="nav-link"
                 :aria-label="`${button.title} sayfasına git`"
+                prefetch
               >
-                {{ button.title }}
-              </v-btn>
+                <v-btn
+                  text
+                  class="nav-btn mx-1"
+                >
+                  {{ button.title }}
+                </v-btn>
+              </nuxt-link>
             </div>
           </v-col>
 
@@ -55,24 +60,31 @@
       class="glass-drawer"
     >
       <v-list nav dense class="py-4">
-        <v-list-item
+        <nuxt-link
           v-for="button in buttons"
           :key="button.route"
           :to="button.route"
-          link
-          class="mobile-nav-item"
+          class="mobile-nav-link"
+          prefetch
         >
-          <v-list-item-content>
-            <v-list-item-title class="text-center font-weight-bold">
-              {{ button.title }}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
+          <v-list-item
+            link
+            class="mobile-nav-item"
+          >
+            <v-list-item-content>
+              <v-list-item-title class="text-center font-weight-bold">
+                {{ button.title }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </nuxt-link>
       </v-list>
     </v-navigation-drawer>
 
     <v-main role="main" class="main-content">
-      <Nuxt />
+      <transition name="page" mode="out-in">
+        <Nuxt />
+      </transition>
     </v-main>
 
     <v-footer app dark class="glass-footer pa-4">
@@ -134,6 +146,10 @@ export default {
     handleScroll() {
       this.scrolled = window.scrollY > 50
     },
+    prefetchRoute() {
+      // Nuxt automatically handles prefetching via nuxt-link
+      // This method is kept for event binding compatibility
+    },
   },
 }
 </script>
@@ -180,6 +196,16 @@ html {
   gap: 8px;
 }
 
+.nav-link {
+  text-decoration: none;
+  display: inline-block;
+}
+
+.mobile-nav-link {
+  text-decoration: none;
+  display: block;
+}
+
 .nav-btn {
   position: relative;
   font-weight: 600;
@@ -202,20 +228,28 @@ html {
   transition: width 0.3s ease;
 }
 
-.nav-btn:hover {
+.nav-link:hover .nav-btn {
   color: #ff0000 !important;
   background-color: rgba(255, 0, 0, 0.1) !important;
 }
 
-.nav-btn:hover::before {
+.nav-link:hover .nav-btn::before {
   width: 80%;
 }
 
-.nav-btn.v-btn--active {
+.nav-link.nuxt-link-active .nav-btn {
   color: #ff0000 !important;
 }
 
-.nav-btn.v-btn--active::before {
+.nav-link.nuxt-link-active .nav-btn::before {
+  width: 80%;
+}
+
+.nav-link.nuxt-link-exact-active .nav-btn {
+  color: #ff0000 !important;
+}
+
+.nav-link.nuxt-link-exact-active .nav-btn::before {
   width: 80%;
 }
 
@@ -232,11 +266,12 @@ html {
   transition: all 0.3s ease;
 }
 
-.mobile-nav-item:hover {
+.mobile-nav-link:hover .mobile-nav-item {
   background-color: rgba(255, 0, 0, 0.1) !important;
 }
 
-.mobile-nav-item.v-list-item--active {
+.mobile-nav-link.nuxt-link-active .mobile-nav-item,
+.mobile-nav-link.nuxt-link-exact-active .mobile-nav-item {
   background-color: rgba(255, 0, 0, 0.2) !important;
   color: #ff0000 !important;
 }
@@ -260,6 +295,22 @@ html {
 /* Main Content */
 .main-content {
   min-height: calc(100vh - 134px);
+}
+
+/* Page Transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.page-enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
 /* Smooth Animations */

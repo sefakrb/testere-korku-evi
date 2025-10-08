@@ -1,18 +1,20 @@
 <template>
   <div class="video-container">
     <video
+      v-if="shouldLoadVideo"
       :src="videoSrc"
       class="hero-video"
       autoplay
       loop
       muted
       playsinline
-      preload="auto"
+      preload="metadata"
       :aria-label="ariaLabel"
+      @loadeddata="videoLoaded = true"
     >
       <track label="Turkish" kind="captions" srclang="tr" default />
     </video>
-    <div class="video-overlay"></div>
+    <div class="video-overlay" :class="{ 'video-loading': !videoLoaded }"></div>
   </div>
 </template>
 
@@ -28,6 +30,16 @@ export default {
       type: String,
       default: 'Video arka plan',
     },
+  },
+  data() {
+    return {
+      shouldLoadVideo: false,
+      videoLoaded: false,
+    }
+  },
+  mounted() {
+    // Load video immediately on homepage for better UX
+    this.shouldLoadVideo = true
   },
 }
 </script>
@@ -66,5 +78,10 @@ export default {
     rgba(0, 0, 0, 0.6) 100%
   );
   z-index: 1;
+  transition: background 0.3s ease;
+}
+
+.video-overlay.video-loading {
+  background: rgba(0, 0, 0, 0.9);
 }
 </style>

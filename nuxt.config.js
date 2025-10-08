@@ -168,4 +168,17 @@ export default {
     color: '#ff0000',
     background: '#000000',
   },
+
+  // Router configuration for better performance
+  router: {
+    prefetchLinks: true,
+    prefetchPayloads: true,
+  },
+
+  // Loading component for page transitions
+  loading: {
+    color: '#ff0000',
+    height: '3px',
+    continuous: true,
+  },
 }
