@@ -165,10 +165,6 @@ export default {
         this.$router.push({ path: '/', hash: `#${id}` })
       }
     },
-    prefetchRoute() {
-      // Nuxt automatically handles prefetching via nuxt-link
-      // This method is kept for event binding compatibility
-    },
   },
 }
 </script>

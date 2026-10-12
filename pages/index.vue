@@ -11,7 +11,7 @@
       <v-container class="fill-height">
         <v-row align="center" justify="center" class="text-center">
           <v-col cols="12" md="10" lg="8">
-            <div class="hero-cta" data-aos="fade-up">
+            <div class="hero-cta">
               <CTAButton
                 text="REZERVASYON YAP"
                 icon="mdi-calendar-check"

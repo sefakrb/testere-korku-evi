@@ -7,7 +7,9 @@ export default function (to, from, savedPosition) {
     return new Promise((resolve) => {
       setTimeout(() => {
         const el = document.querySelector(to.hash)
-        resolve(el ? { selector: to.hash, offset: { x: 0, y: 0 } } : { x: 0, y: 0 })
+        resolve(
+          el ? { selector: to.hash, offset: { x: 0, y: 0 } } : { x: 0, y: 0 }
+        )
       }, 400)
     })
   }
