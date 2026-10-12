@@ -1,17 +1,22 @@
 <template>
-  <div class="video-container">
+  <div
+    class="video-container"
+    :style="posterSrc ? { backgroundImage: `url(${posterSrc})` } : null"
+  >
     <video
       v-if="shouldLoadVideo"
-      :src="videoSrc"
       class="hero-video"
       autoplay
       loop
       muted
       playsinline
-      preload="metadata"
+      preload="auto"
+      :poster="posterSrc"
       :aria-label="ariaLabel"
       @loadeddata="videoLoaded = true"
     >
+      <source v-if="webmSrc" :src="webmSrc" type="video/webm" />
+      <source :src="videoSrc" type="video/mp4" />
       <track label="Turkish" kind="captions" srclang="tr" default />
     </video>
     <div class="video-overlay" :class="{ 'video-loading': !videoLoaded }"></div>
@@ -25,6 +30,14 @@ export default {
     videoSrc: {
       type: String,
       required: true,
+    },
+    webmSrc: {
+      type: String,
+      default: '',
+    },
+    posterSrc: {
+      type: String,
+      default: '',
     },
     ariaLabel: {
       type: String,
@@ -52,6 +65,8 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 0;
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-video {

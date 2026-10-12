@@ -1,11 +1,13 @@
 <template>
   <div class="home-page">
     <HeroVideo
-      :video-src="require('../assets/pexels-cottonbro-5435725.mp4')"
+      :video-src="require('../assets/hero.mp4')"
+      :webm-src="require('../assets/hero.webm')"
+      :poster-src="require('../assets/hero-poster.jpg')"
       aria-label="Video arka plan korku evi"
     />
 
-    <div class="hero-content">
+    <section id="ana-sayfa" class="hero-content">
       <v-container class="fill-height">
         <v-row align="center" justify="center" class="text-center">
           <v-col cols="12" md="10" lg="8">
@@ -13,13 +15,13 @@
               <CTAButton
                 text="REZERVASYON YAP"
                 icon="mdi-calendar-check"
-                to="/reservation"
+                to="/#rezervasyon"
                 class="mx-2 my-2"
               />
               <CTAButton
                 text="HİKAYEYİ KEŞFET"
                 icon="mdi-book-open-variant"
-                to="/story"
+                to="/#hikaye"
                 variant="outline"
                 :outlined="true"
                 color="white"
@@ -27,20 +29,36 @@
               />
             </div>
 
-            <div class="scroll-indicator" data-aos="fade" data-aos-delay="800">
+            <a
+              href="#hakkimizda"
+              class="scroll-indicator"
+              aria-label="Aşağı kaydır"
+              @click.prevent="scrollToNext"
+            >
               <v-icon color="white" size="32">mdi-chevron-down</v-icon>
               <p class="mt-2">Aşağı Kaydır</p>
-            </div>
+            </a>
           </v-col>
         </v-row>
       </v-container>
-    </div>
+    </section>
+
+    <InformationSection />
+    <RulesSection />
+    <StorySection />
+    <ReservationSection />
   </div>
 </template>
 
 <script>
 export default {
   name: 'IndexPage',
+  methods: {
+    scrollToNext() {
+      const el = document.getElementById('hakkimizda')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    },
+  },
   head() {
     return {
       title: 'Ana Sayfa',
@@ -98,6 +116,8 @@ export default {
 }
 
 .scroll-indicator {
+  text-decoration: none;
+  cursor: pointer;
   position: absolute;
   bottom: 40px;
   left: 50%;
