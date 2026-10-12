@@ -27,18 +27,19 @@
 
           <v-col v-if="!isMobile" cols="auto" class="pa-0">
             <div class="nav-buttons">
-              <nuxt-link
+              <a
                 v-for="button in buttons"
-                :key="button.route"
-                :to="button.route"
+                :key="button.id"
+                :href="`/#${button.id}`"
                 class="nav-link"
-                :aria-label="`${button.title} sayfasına git`"
-                prefetch
+                :class="{ 'nav-active': activeSection === button.id }"
+                :aria-label="`${button.title} bölümüne git`"
+                @click.prevent="goTo(button.id)"
               >
                 <v-btn text class="nav-btn mx-1">
                   {{ button.title }}
                 </v-btn>
-              </nuxt-link>
+              </a>
             </div>
           </v-col>
 
@@ -57,12 +58,13 @@
       class="glass-drawer"
     >
       <v-list nav dense class="py-4">
-        <nuxt-link
+        <a
           v-for="button in buttons"
-          :key="button.route"
-          :to="button.route"
+          :key="button.id"
+          :href="`/#${button.id}`"
           class="mobile-nav-link"
-          prefetch
+          :class="{ 'nav-active': activeSection === button.id }"
+          @click.prevent="goTo(button.id)"
         >
           <v-list-item link class="mobile-nav-item">
             <v-list-item-content>
@@ -71,7 +73,7 @@
               </v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-        </nuxt-link>
+        </a>
       </v-list>
     </v-navigation-drawer>
 
@@ -81,7 +83,7 @@
       </transition>
     </v-main>
 
-    <v-footer app dark class="glass-footer pa-4">
+    <v-footer dark class="glass-footer pa-4">
       <v-container>
         <v-row align="center" justify="center">
           <v-col cols="12" class="text-center">
@@ -106,15 +108,16 @@ export default {
   data() {
     return {
       buttons: [
-        { route: '/', title: 'ANA SAYFA' },
-        { route: 'information', title: 'HAKKIMIZDA' },
-        { route: 'rules', title: 'KURALLAR' },
-        { route: 'story', title: 'HİKAYE' },
-        { route: 'reservation', title: 'REZERVASYON' },
+        { id: 'ana-sayfa', title: 'ANA SAYFA' },
+        { id: 'hakkimizda', title: 'HAKKIMIZDA' },
+        { id: 'kurallar', title: 'KURALLAR' },
+        { id: 'hikaye', title: 'HİKAYE' },
+        { id: 'rezervasyon', title: 'REZERVASYON' },
       ],
       appBarHeight: 64,
       drawer: false,
       scrolled: false,
+      activeSection: 'ana-sayfa',
     }
   },
   computed: {
@@ -125,6 +128,7 @@ export default {
   mounted() {
     this.onResize()
     window.addEventListener('scroll', this.handleScroll)
+    this.handleScroll()
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -139,6 +143,30 @@ export default {
     },
     handleScroll() {
       this.scrolled = window.scrollY > 50
+      if (this.$route.path !== '/') {
+        return
+      }
+      // Ekranın üst kısmını geçen son bölüm aktif sayılır
+      let current = this.buttons[0].id
+      for (const { id } of this.buttons) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.4) {
+          current = id
+        }
+      }
+      this.activeSection = current
+    },
+    goTo(id) {
+      this.drawer = false
+      if (this.$route.path === '/') {
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+          window.history.replaceState(null, '', `/#${id}`)
+        }
+      } else {
+        this.$router.push({ path: '/', hash: `#${id}` })
+      }
     },
     prefetchRoute() {
       // Nuxt automatically handles prefetching via nuxt-link
@@ -231,19 +259,11 @@ html {
   width: 80%;
 }
 
-.nav-link.nuxt-link-active .nav-btn {
+.nav-link.nav-active .nav-btn {
   color: #ff0000 !important;
 }
 
-.nav-link.nuxt-link-active .nav-btn::before {
-  width: 80%;
-}
-
-.nav-link.nuxt-link-exact-active .nav-btn {
-  color: #ff0000 !important;
-}
-
-.nav-link.nuxt-link-exact-active .nav-btn::before {
+.nav-link.nav-active .nav-btn::before {
   width: 80%;
 }
 
@@ -264,8 +284,7 @@ html {
   background-color: rgba(255, 0, 0, 0.1) !important;
 }
 
-.mobile-nav-link.nuxt-link-active .mobile-nav-item,
-.mobile-nav-link.nuxt-link-exact-active .mobile-nav-item {
+.mobile-nav-link.nav-active .mobile-nav-item {
   background-color: rgba(255, 0, 0, 0.2) !important;
   color: #ff0000 !important;
 }
@@ -286,9 +305,16 @@ html {
   opacity: 0.8;
 }
 
+/* Tek sayfadaki bölümler: sabit videonun üstünde, sabit navbar altında kalmasın */
+.page-section {
+  position: relative;
+  z-index: 2;
+  scroll-margin-top: 64px;
+}
+
 /* Main Content */
 .main-content {
-  min-height: calc(100vh - 134px);
+  min-height: 100vh;
 }
 
 /* Page Transitions */
