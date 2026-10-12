@@ -84,14 +84,31 @@ export default {
 
 <style scoped>
 .reservation-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 64px);
   background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
-  padding: 80px 24px;
+  padding: 64px 24px;
 }
 
+/* Kart ve harita arasında boşluk, ikisi de bölümün ortasında */
 .split-screen {
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1160px;
   margin: 0 auto;
+  gap: 48px;
   align-items: stretch;
+  justify-content: center;
+}
+
+@media (min-width: 961px) {
+  .split-screen > .info-section,
+  .split-screen > .map-section {
+    flex: 1 1 0;
+    max-width: none;
+    width: auto;
+  }
 }
 
 /* Info Section */
@@ -99,12 +116,11 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 24px 0 0;
+  padding: 0;
 }
 
 .info-content {
   width: 100%;
-  max-width: 600px;
 }
 
 .glass-card {
@@ -234,20 +250,24 @@ export default {
   min-height: 440px;
   overflow: hidden;
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  background: #111;
+  border: 1px solid rgba(255, 0, 0, 0.25);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 0, 0, 0.1);
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+.map-wrapper:hover {
+  border-color: rgba(255, 0, 0, 0.5);
+  box-shadow: 0 16px 48px rgba(255, 0, 0, 0.25);
+}
+
+/* Koyu mod harita: renkleri ters çevirip tonu geri döndür */
 .google-map {
   width: 100%;
   height: 100%;
   border: none;
-  filter: grayscale(20%) contrast(1.2);
-  transition: filter 0.3s ease;
-}
-
-.map-wrapper:hover .google-map {
-  filter: grayscale(0%) contrast(1);
+  filter: invert(92%) hue-rotate(180deg) saturate(0.7) contrast(0.95)
+    brightness(0.85);
 }
 
 .map-overlay {
@@ -256,22 +276,24 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    to left,
-    rgba(0, 0, 0, 0) 50%,
-    rgba(0, 0, 0, 0.3) 100%
-  );
+  border-radius: 24px;
+  box-shadow: inset 0 0 70px rgba(0, 0, 0, 0.7);
   pointer-events: none;
 }
 
 /* Responsive Design */
 @media (max-width: 960px) {
   .reservation-page {
+    min-height: auto;
     padding: 56px 16px;
   }
 
+  .split-screen {
+    gap: 32px;
+  }
+
   .info-section {
-    padding: 0 0 32px;
+    padding: 0;
   }
 
   .glass-card {
@@ -302,7 +324,7 @@ export default {
 
 @media (max-width: 600px) {
   .info-section {
-    padding: 0 0 24px;
+    padding: 0;
   }
 
   .glass-card {
