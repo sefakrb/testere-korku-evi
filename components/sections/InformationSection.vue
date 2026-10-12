@@ -3,7 +3,12 @@
     <!-- Hero Section -->
     <v-container fluid class="pa-0 hero-section">
       <v-row no-gutters>
-        <v-col cols="12" md="6" class="image-section">
+        <v-col
+          v-reveal="{ from: 'left' }"
+          cols="12"
+          md="6"
+          class="image-section"
+        >
           <div class="hero-image-wrapper">
             <v-img
               :src="
@@ -18,7 +23,12 @@
           </div>
         </v-col>
 
-        <v-col cols="12" md="6" class="content-section">
+        <v-col
+          v-reveal="{ from: 'right', delay: 150 }"
+          cols="12"
+          md="6"
+          class="content-section"
+        >
           <div class="hero-content">
             <h1 class="main-title">TESTERE KORKU EVİ</h1>
             <div class="title-divider"></div>
@@ -37,11 +47,14 @@
 
     <!-- Features Grid -->
     <v-container class="features-section py-12">
-      <h2 class="section-title text-center mb-12">NELERİ KAŞFEDECEKSİNİZ</h2>
+      <h2 v-reveal class="section-title text-center mb-12">
+        NELERİ KAŞFEDECEKSİNİZ
+      </h2>
       <v-row>
         <v-col
           v-for="(item, index) in items"
           :key="item.src"
+          v-reveal="{ delay: index * 120 }"
           cols="12"
           sm="6"
           lg="3"
@@ -51,8 +64,6 @@
             :image-src="require('../../assets/' + item.src)"
             :title="item.title"
             :text="item.text"
-            :data-aos="'fade-up'"
-            :data-aos-delay="index * 100"
           />
         </v-col>
       </v-row>

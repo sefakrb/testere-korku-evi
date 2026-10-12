@@ -2,7 +2,7 @@
   <section id="hikaye" class="story-page page-section">
     <v-container fluid class="pa-0">
       <v-row no-gutters class="story-row">
-        <v-col cols="12" md="6" class="image-col">
+        <v-col v-reveal="{ from: 'left' }" cols="12" md="6" class="image-col">
           <div class="image-container">
             <v-img
               :src="
@@ -17,7 +17,12 @@
           </div>
         </v-col>
 
-        <v-col cols="12" md="6" class="content-col">
+        <v-col
+          v-reveal="{ from: 'right', delay: 150 }"
+          cols="12"
+          md="6"
+          class="content-col"
+        >
           <div class="story-content">
             <div class="story-card glass-card">
               <h1 class="story-title">HİKAYE</h1>

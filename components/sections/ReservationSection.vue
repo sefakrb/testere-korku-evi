@@ -4,7 +4,7 @@
       <v-row no-gutters class="split-screen">
         <!-- Contact Info Section -->
         <v-col cols="12" md="6" class="info-section">
-          <div class="info-content">
+          <div v-reveal="{ from: 'left' }" class="info-content">
             <div class="info-card glass-card">
               <div class="section-header">
                 <v-icon class="header-icon" size="40" color="red"
@@ -56,7 +56,7 @@
 
         <!-- Map Section -->
         <v-col cols="12" md="6" class="map-section">
-          <div class="map-wrapper">
+          <div v-reveal="{ from: 'right', delay: 150 }" class="map-wrapper">
             <iframe
               title="Testere Korku Evi konumu - Meşrutiyet Mahallesi, Kızılay, Ankara"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d350.76213076107797!2d32.85647174960759!3d39.91744352315268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x9ed4d27f0d62d13d!2sTestere%20Ankara%20Korku%20Evi!5e0!3m2!1str!2str!4v1660498624377!5m2!1str!2str"
@@ -84,12 +84,14 @@ export default {
 
 <style scoped>
 .reservation-page {
-  min-height: 100vh;
-  background: #000000;
+  background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
+  padding: 80px 24px;
 }
 
 .split-screen {
-  min-height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
 }
 
 /* Info Section */
@@ -97,26 +99,12 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 40px;
-  background: linear-gradient(135deg, #000000 0%, #1a0000 100%);
-  min-height: 100vh;
+  padding: 0 24px 0 0;
 }
 
 .info-content {
   width: 100%;
   max-width: 600px;
-  animation: slideInLeft 0.8s ease;
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
 }
 
 .glass-card {
@@ -235,15 +223,19 @@ export default {
 /* Map Section */
 .map-section {
   position: relative;
-  height: 100vh;
-  min-height: 600px;
+  display: flex;
+  min-height: 440px;
 }
 
 .map-wrapper {
   position: relative;
+  flex: 1;
   width: 100%;
-  height: 100%;
+  min-height: 440px;
   overflow: hidden;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
 }
 
 .google-map {
@@ -274,9 +266,12 @@ export default {
 
 /* Responsive Design */
 @media (max-width: 960px) {
+  .reservation-page {
+    padding: 56px 16px;
+  }
+
   .info-section {
-    padding: 40px 24px;
-    min-height: auto;
+    padding: 0 0 32px;
   }
 
   .glass-card {
@@ -295,9 +290,9 @@ export default {
     font-size: 0.95rem;
   }
 
-  .map-section {
-    height: 60vh;
-    min-height: 400px;
+  .map-section,
+  .map-wrapper {
+    min-height: 340px;
   }
 
   .contact-text {
@@ -307,7 +302,7 @@ export default {
 
 @media (max-width: 600px) {
   .info-section {
-    padding: 32px 16px;
+    padding: 0 0 24px;
   }
 
   .glass-card {
@@ -344,9 +339,9 @@ export default {
     font-size: 0.95rem;
   }
 
-  .map-section {
-    height: 50vh;
-    min-height: 300px;
+  .map-section,
+  .map-wrapper {
+    min-height: 280px;
   }
 }
 </style>

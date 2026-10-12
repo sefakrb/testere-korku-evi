@@ -55,8 +55,7 @@ export default {
   name: 'IndexPage',
   methods: {
     scrollToNext() {
-      const el = document.getElementById('hakkimizda')
-      if (el) el.scrollIntoView({ behavior: 'smooth' })
+      this.$smoothScrollTo('hakkimizda')
     },
   },
   head() {
@@ -105,6 +104,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Hero'dan sonraki bölüme yumuşak geçiş */
+.hero-content::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 22vh;
+  background: linear-gradient(to bottom, transparent, #000000);
+  pointer-events: none;
 }
 
 .hero-cta {
