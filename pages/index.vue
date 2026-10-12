@@ -2,6 +2,7 @@
   <div class="home-page">
     <HeroVideo
       :video-src="require('../assets/hero.mp4')"
+      :webm-src="require('../assets/hero.webm')"
       :poster-src="require('../assets/hero-poster.jpg')"
       aria-label="Video arka plan korku evi"
     />

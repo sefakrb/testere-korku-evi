@@ -5,7 +5,6 @@
   >
     <video
       v-if="shouldLoadVideo"
-      :src="videoSrc"
       class="hero-video"
       autoplay
       loop
@@ -16,6 +15,8 @@
       :aria-label="ariaLabel"
       @loadeddata="videoLoaded = true"
     >
+      <source v-if="webmSrc" :src="webmSrc" type="video/webm" />
+      <source :src="videoSrc" type="video/mp4" />
       <track label="Turkish" kind="captions" srclang="tr" default />
     </video>
     <div class="video-overlay" :class="{ 'video-loading': !videoLoaded }"></div>
@@ -29,6 +30,10 @@ export default {
     videoSrc: {
       type: String,
       required: true,
+    },
+    webmSrc: {
+      type: String,
+      default: '',
     },
     posterSrc: {
       type: String,
