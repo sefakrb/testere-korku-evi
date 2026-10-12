@@ -1,7 +1,8 @@
 <template>
   <div class="home-page">
     <HeroVideo
-      :video-src="require('../assets/pexels-cottonbro-5435725.mp4')"
+      :video-src="require('../assets/hero.mp4')"
+      :poster-src="require('../assets/hero-poster.jpg')"
       aria-label="Video arka plan korku evi"
     />
 

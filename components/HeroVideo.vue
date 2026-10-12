@@ -1,5 +1,8 @@
 <template>
-  <div class="video-container">
+  <div
+    class="video-container"
+    :style="posterSrc ? { backgroundImage: `url(${posterSrc})` } : null"
+  >
     <video
       v-if="shouldLoadVideo"
       :src="videoSrc"
@@ -8,7 +11,8 @@
       loop
       muted
       playsinline
-      preload="metadata"
+      preload="auto"
+      :poster="posterSrc"
       :aria-label="ariaLabel"
       @loadeddata="videoLoaded = true"
     >
@@ -25,6 +29,10 @@ export default {
     videoSrc: {
       type: String,
       required: true,
+    },
+    posterSrc: {
+      type: String,
+      default: '',
     },
     ariaLabel: {
       type: String,
@@ -52,6 +60,8 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 0;
+  background-size: cover;
+  background-position: center;
 }
 
 .hero-video {
