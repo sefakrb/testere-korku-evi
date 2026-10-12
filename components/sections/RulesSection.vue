@@ -1,7 +1,7 @@
 <template>
   <section id="kurallar" class="rules-page page-section">
     <v-container class="py-12">
-      <div class="page-header">
+      <div v-reveal class="page-header">
         <h1 class="page-title">KURALLAR</h1>
         <div class="title-underline"></div>
         <p class="page-subtitle">
@@ -13,22 +13,17 @@
         <v-col
           v-for="(rule, index) in rules"
           :key="rule.icon"
+          v-reveal="{ delay: (index % 3) * 120 }"
           cols="12"
           sm="6"
           md="4"
           class="rule-col"
         >
-          <RuleCard
-            :icon="rule.icon"
-            :title="rule.title"
-            :text="rule.rule"
-            :data-aos="'fade-up'"
-            :data-aos-delay="index * 80"
-          />
+          <RuleCard :icon="rule.icon" :title="rule.title" :text="rule.rule" />
         </v-col>
       </v-row>
 
-      <div class="cta-section">
+      <div v-reveal class="cta-section">
         <CTAButton
           text="REZERVASYON YAP"
           icon="mdi-calendar-check"
@@ -102,18 +97,6 @@ export default {
 .page-header {
   text-align: center;
   margin-bottom: 60px;
-  animation: fadeInDown 0.8s ease;
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .page-title {

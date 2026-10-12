@@ -159,11 +159,8 @@ export default {
     goTo(id) {
       this.drawer = false
       if (this.$route.path === '/') {
-        const el = document.getElementById(id)
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' })
-          window.history.replaceState(null, '', `/#${id}`)
-        }
+        this.$smoothScrollTo(id)
+        window.history.replaceState(null, '', `/#${id}`)
       } else {
         this.$router.push({ path: '/', hash: `#${id}` })
       }
@@ -180,7 +177,6 @@ export default {
 html {
   overflow: auto;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 /* Glassmorphism Navbar */
@@ -310,6 +306,36 @@ html {
   position: relative;
   z-index: 2;
   scroll-margin-top: 64px;
+}
+
+/* Scroll ile görünür olma animasyonları (v-reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal.reveal-left {
+  transform: translateX(-48px);
+}
+
+.reveal.reveal-right {
+  transform: translateX(48px);
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* Main Content */
